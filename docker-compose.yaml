@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  
+  # sample service provider 
+  # http://localhost:8080
+  sp:
+    image: kxn4t/saml-sp-sample:0.0.1
+    ports:
+      - 8080:8080
+
+  # sample IdP
+  # http://localhost:18080/admin
+  keycloak:
+    image: quay.io/keycloak/keycloak:18.0.0
+    ports:
+      - 18080:8080
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command: start-dev
